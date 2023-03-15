@@ -17,13 +17,16 @@ public class RegistrationPage {
     RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
 
     private String TITLE_TEXT = "Student Registration Form";
+
+    private String fixedBanner = "$('#fixedban').remove()";
+    private String footer = "$('footer').remove()";
     private SelenideElement
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             emailAddressInput = $("#userEmail"),
             genderInput = $(byText("Female")),
             subjectInput = $("#subjectsInput"),
-            hobbiestInput = $(byText("Music")),
+            hobbiesInput = $(byText("Music")),
             pictureInput = $("#uploadPicture"),
             addressInput = $("#currentAddress"),
             stateInput = $(("#state")),
@@ -34,8 +37,12 @@ public class RegistrationPage {
     public RegistrationPage openPage() {
         open("https://demoqa.com/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text(TITLE_TEXT));
-        Selenide.executeJavaScript("$('#fixedban').remove()");
-        Selenide.executeJavaScript("$('footer').remove()");
+        return this;
+    }
+
+    public RegistrationPage removeBanners() {
+        Selenide.executeJavaScript(fixedBanner);
+        Selenide.executeJavaScript(footer);
         return this;
     }
 
@@ -46,11 +53,6 @@ public class RegistrationPage {
 
     public RegistrationPage setLastName(String value) {
         lastNameInput.setValue(value);
-        return this;
-    }
-
-    public RegistrationPage clearLastName() {
-        lastNameInput.clear();
         return this;
     }
 
@@ -81,7 +83,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setHobbies(String hobbies) {
-        hobbiestInput.click();
+        hobbiesInput.click();
         return this;
     }
 

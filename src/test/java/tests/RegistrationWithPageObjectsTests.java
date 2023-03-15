@@ -32,6 +32,7 @@ public class RegistrationWithPageObjectsTests {
 
         // set input
         registrationPage.openPage()
+                        .removeBanners()
                         .setFirstName(userName)
                         .setLastName(userLastName)
                         .setEmail(emailAddress)
