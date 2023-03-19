@@ -24,9 +24,7 @@ public class RegistrationPage {
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             emailAddressInput = $("#userEmail"),
-            genderInput = $(byText("Female")),
             subjectInput = $("#subjectsInput"),
-            hobbiesInput = $(byText("Music")),
             pictureInput = $("#uploadPicture"),
             addressInput = $("#currentAddress"),
             stateInput = $(("#state")),
@@ -61,8 +59,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setGender() {
-        genderInput.click();
+    public RegistrationPage setGender(String gender) {
+        $(byText(gender)).click();
         return this;
     }
 
@@ -83,7 +81,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setHobbies(String hobbies) {
-        hobbiesInput.click();
+        $(byText(hobbies)).click();
         return this;
     }
 
