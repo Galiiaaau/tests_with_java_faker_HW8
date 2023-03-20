@@ -16,11 +16,7 @@ public class RegistrationPage {
     CalendarComponent calendarComponent = new CalendarComponent();
     RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
 
-    private String TITLE_TEXT = "Student Registration Form";
-
-    private String fixedBanner = "$('#fixedban').remove()";
-    private String footer = "$('footer').remove()";
-    private SelenideElement
+    private final SelenideElement
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             emailAddressInput = $("#userEmail"),
@@ -34,12 +30,15 @@ public class RegistrationPage {
 
     public RegistrationPage openPage() {
         open("https://demoqa.com/automation-practice-form");
+        String TITLE_TEXT = "Student Registration Form";
         $(".practice-form-wrapper").shouldHave(text(TITLE_TEXT));
         return this;
     }
 
     public RegistrationPage removeBanners() {
+        String fixedBanner = "$('#fixedban').remove()";
         Selenide.executeJavaScript(fixedBanner);
+        String footer = "$('footer').remove()";
         Selenide.executeJavaScript(footer);
         return this;
     }
