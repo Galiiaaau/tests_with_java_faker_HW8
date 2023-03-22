@@ -2,9 +2,8 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+import utils.RandomUtils;
 
-
-import static utils.RandomUtils.*;
 import static utils.Utils.*;
 
 public class RegistrationWithFakerTests extends TestBase {
@@ -15,33 +14,35 @@ public class RegistrationWithFakerTests extends TestBase {
     @Test
     void successfulRegistrationForm() {
 
+        RandomUtils testRandomUtils = new RandomUtils();
+
         // set input
         registrationPage.openPage()
                         .removeBanners()
-                        .setFirstName(firstName)
-                        .setLastName(lastName)
-                        .setEmail(emailAddress)
-                        .setGender(userGender)
-                        .setPhoneNumber(String.valueOf(userMobile))
-                        .setBirthDate(birthDay, birthMonth, birthYear)
-                        .setSubject(userSubject)
-                        .setHobbies(userHobby)
+                        .setFirstName(testRandomUtils.getFirstName())
+                        .setLastName(testRandomUtils.getLastName())
+                        .setEmail(testRandomUtils.getEmailAddress())
+                        .setGender(testRandomUtils.getUserGender())
+                        .setPhoneNumber(String.valueOf(testRandomUtils.getUserMobile()))
+                        .setBirthDate(testRandomUtils.getUserBirthDay(), testRandomUtils.getUserBirthMonth(), testRandomUtils.getUserBirthYear())
+                        .setSubject(testRandomUtils.getUserSubject())
+                        .setHobbies(testRandomUtils.getUserHobby())
                         .setPicture(nameWithPathToPicture)
-                        .setAddress(currentAddress)
-                        .setStateAndCity(state, city);
+                        .setAddress(testRandomUtils.getCurrentAddress())
+                        .setStateAndCity(testRandomUtils.getUserState(), testRandomUtils.getUserCity());
 
         // verify input
         registrationPage.verifyResultsModalAppears()
-                        .verifyNameResult("Student Name", firstName + " " + lastName)
-                        .verifyEmailResult("Student Email", emailAddress)
-                        .verifyGenderResult("Gender", userGender)
-                        .verifyMobileResult("Mobile", String.valueOf(userMobile))
-                        .verifyBirthDateResult("Date of Birth", birthDay + " " + birthMonth + "," + birthYear)
-                        .verifySubjectResult("Subjects", userSubject)
-                        .verifyHobbiesResult("Hobbies", userHobby)
+                        .verifyNameResult("Student Name", testRandomUtils.getFirstName() + " " + testRandomUtils.getLastName())
+                        .verifyEmailResult("Student Email", testRandomUtils.getEmailAddress())
+                        .verifyGenderResult("Gender", testRandomUtils.getUserGender())
+                        .verifyMobileResult("Mobile", String.valueOf(testRandomUtils.getUserMobile()))
+                        .verifyBirthDateResult("Date of Birth", testRandomUtils.getUserBirthDay() + " " + testRandomUtils.getUserBirthMonth() + "," + testRandomUtils.getUserBirthYear())
+                        .verifySubjectResult("Subjects", testRandomUtils.getUserSubject())
+                        .verifyHobbiesResult("Hobbies", testRandomUtils.getUserHobby())
                         .verifyPictureResult("Picture", picture)
-                        .verifyAddressResult("Address", currentAddress)
-                        .verifyStateAndCityResult("State and City", state + " " + city);
+                        .verifyAddressResult("Address", testRandomUtils.getCurrentAddress())
+                        .verifyStateAndCityResult("State and City", testRandomUtils.getUserState() + " " + testRandomUtils.getUserCity());
 
         // close modal window
         registrationPage.modalWindowClose();
