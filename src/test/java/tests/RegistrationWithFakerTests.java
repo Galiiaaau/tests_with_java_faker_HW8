@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import utils.RandomUtils;
@@ -12,6 +13,7 @@ public class RegistrationWithFakerTests extends TestBase {
 
 
     @Test
+    @Tag("remote")
     void successfulRegistrationForm() {
 
         RandomUtils testRandomUtils = new RandomUtils();
