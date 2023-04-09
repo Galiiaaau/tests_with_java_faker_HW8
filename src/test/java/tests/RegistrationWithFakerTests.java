@@ -14,7 +14,7 @@ public class RegistrationWithFakerTests extends TestBase {
 
 
     @Test
-    @Tag("remote")
+    @Tag("java_faker")
     void successfulRegistrationForm() {
 
         RandomUtils testRandomUtils = new RandomUtils();
