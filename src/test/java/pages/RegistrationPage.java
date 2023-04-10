@@ -29,7 +29,7 @@ public class RegistrationPage {
             modalWindowCloseBtn = $("#closeLargeModal");
 
     public RegistrationPage openPage() {
-        open("https://demoqa.com/automation-practice-form");
+        open("/automation-practice-form");
         String TITLE_TEXT = "Student Registration Form";
         $(".practice-form-wrapper").shouldHave(text(TITLE_TEXT));
         return this;
